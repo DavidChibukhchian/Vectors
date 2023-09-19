@@ -6,6 +6,7 @@ const unsigned int HEIGHT = 108*5;
 
 int main()
 {
+	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Vectors");
 	sf::Image image;
 	image.create(WIDTH, HEIGHT, sf::Color::Blue);
 
@@ -14,6 +15,7 @@ int main()
 
 	sf::Sprite sprite;
 	sprite.setTexture(background);
+	window.draw(sprite);
 
 
 	Vec a(3, 4);
@@ -22,16 +24,15 @@ int main()
 	Vec d = VecMul(b, 2);
 
 
-	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Vectors");
+	
 
 	Coord_System coord_system(50, 50, 10, sf::Color::Red);
-
-
+	coord_system.draw(&window);
+	
+	
+	window.display();
 	while (window.isOpen())
 	{
-		window.clear();
-		window.draw(sprite);
-
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -40,16 +41,6 @@ int main()
 				window.close();
 			}
 		}
-	
-		coord_system.draw(&window);
-
-
-
-
-
-
-
-		window.display();
 	}
 
 	return 0;

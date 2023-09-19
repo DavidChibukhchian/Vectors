@@ -18,9 +18,9 @@ void Coord_System::draw(sf::RenderWindow* window)
 {
 	sf::Vertex line[] =
 	{
-    	sf::Vertex(sf::Vector2f(300.f, 0.f)),
-    	sf::Vertex(sf::Vector2f(300.f, 400))
+    	sf::Vertex(sf::Vector2f(300.f, 0.f), Coord_System::color),
+    	sf::Vertex(sf::Vector2f(300.f, 400), Coord_System::color)
 	};
 	
-	window->draw(line, 2, sf::Lines);
+	window->draw(line, 20, sf::Lines);
 }
