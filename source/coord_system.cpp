@@ -29,7 +29,7 @@ void DrawCircles(sf::RenderWindow* window, Coord_System* coord_system)
 	double x = coord_system->base_len * (div_x - floor(div_x));
 	double y = coord_system->base_len * (div_y - floor(div_y));
 
-	for (; x <= WIDTH_OF_WINDOW; x += coord_system->base_len)
+	for (; x <= WIDTH_OF_WINDOW;  x += coord_system->base_len)
 	{
 		circle.setPosition(sf::Vector2f(x - RADIUS, coord_system->y0 - RADIUS));
 		window->draw(circle);

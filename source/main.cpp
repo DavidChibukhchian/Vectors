@@ -6,24 +6,18 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW), "Vectors");
 	
-	sf::Image image;
-	image.create(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW, sf::Color::Blue);
-
-	sf::Texture background;
-	background.loadFromImage(image);
-
-	sf::Sprite sprite;
-	sprite.setTexture(background);
+	sf::Image image; sf::Texture texture; sf::Sprite sprite;
+	create_sprite(&image, &texture, &sprite);
 	window.draw(sprite);
 
 	Coord_System coord_system(200, 400, 35, sf::Color::Red);
 	coord_system.draw(&window);
 
 
-	//Vec a(3, 4);
-	//Vec b(4, 5);
-	//Vec c = VecAdd(a, b);
-	//Vec d = VecMul(b, 2);
+	Vec a(3, 4);
+	Vec b(4, 5);
+	Vec c = VecAdd(a, b);
+	Vec d = VecMul(b, 2);
 	
 	
 	

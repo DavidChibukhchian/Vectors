@@ -1,4 +1,5 @@
 #include "vectors.h"
+#include "common.h"
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -48,4 +49,14 @@ Vec VecSub(Vec a, Vec b)
 	Vec res = VecAdd(a, VecOpposite(b));
 
 	return res;
+}
+
+
+void create_sprite(sf::Image* image, sf::Texture* texture, sf::Sprite* sprite)
+{
+	image->create(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW, background_color);
+
+	texture->loadFromImage(*image);
+	
+	sprite->setTexture(*texture);
 }
