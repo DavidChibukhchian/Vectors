@@ -9,7 +9,8 @@
 
 const unsigned int WIDTH_OF_WINDOW  = 192*5;
 const unsigned int HEIGHT_OF_WINDOW = 108*5;
-const sf::Color background_color = sf::Color::Blue;
+const sf::Color    background_color = sf::Color::Blue;
+const double RADIUS = 2.0;
 
 //---------------------------------------------------------------------------------------------------------------------
 

@@ -21,35 +21,22 @@ Coord_System::~Coord_System()
 
 void DrawCircles(sf::RenderWindow* window, Coord_System* coord_system)
 {
-	const float radius = 2.0;
-
-	sf::CircleShape circle(radius);
+	sf::CircleShape circle(RADIUS);
     circle.setFillColor(coord_system->color);
-	circle.setPosition(sf::Vector2f(coord_system->x0 - radius, coord_system->y0 - radius));
 
-	window->draw(circle);
+	double div_x = (coord_system->x0) / (coord_system->base_len);
+	double div_y = (coord_system->y0) / (coord_system->base_len);
+	double x = coord_system->base_len * (div_x - floor(div_x));
+	double y = coord_system->base_len * (div_y - floor(div_y));
 
-	for (float x_position = coord_system->x0; x_position <= WIDTH_OF_WINDOW; x_position += coord_system->base_len)
+	for (; x <= WIDTH_OF_WINDOW; x += coord_system->base_len)
 	{
-		circle.setPosition(sf::Vector2f(x_position - radius, coord_system->y0 - radius));
+		circle.setPosition(sf::Vector2f(x - RADIUS, coord_system->y0 - RADIUS));
 		window->draw(circle);
 	}
-
-	for (float x_position = coord_system->x0; x_position >= 0.f; x_position -= coord_system->base_len)
+	for (; y <= HEIGHT_OF_WINDOW; y += coord_system->base_len)
 	{
-		circle.setPosition(sf::Vector2f(x_position - radius, coord_system->y0 - radius));
-		window->draw(circle);
-	}
-
-	for (float y_position = coord_system->y0; y_position >= 0.f; y_position -= coord_system->base_len)
-	{
-		circle.setPosition(sf::Vector2f(coord_system->x0 - radius, y_position - radius));
-		window->draw(circle);
-	}
-
-	for (float y_position = coord_system->y0; y_position <= HEIGHT_OF_WINDOW; y_position += coord_system->base_len)
-	{
-		circle.setPosition(sf::Vector2f(coord_system->x0 - radius, y_position - radius));
+		circle.setPosition(sf::Vector2f(coord_system->x0 - RADIUS, y - RADIUS));
 		window->draw(circle);
 	}
 }
