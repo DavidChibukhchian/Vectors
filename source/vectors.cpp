@@ -7,6 +7,7 @@ Vec::Vec(double x, double y) :
 	y (y)
 	{}
 
+
 Vec::~Vec()
 {
 	this->x = std::numeric_limits<double>::signaling_NaN();

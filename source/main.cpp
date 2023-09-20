@@ -18,15 +18,13 @@ int main()
 	window.draw(sprite);
 
 
-	Vec a(3, 4);
-	Vec b(4, 5);
-	Vec c = VecAdd(a, b);
-	Vec d = VecMul(b, 2);
-
-
+	//Vec a(3, 4);
+	//Vec b(4, 5);
+	//Vec c = VecAdd(a, b);
+	//Vec d = VecMul(b, 2);
 	
 
-	Coord_System coord_system(50, 50, 10, sf::Color::Red);
+	Coord_System coord_system(200, 400, 35, sf::Color::Red);
 	coord_system.draw(&window);
 	
 	
