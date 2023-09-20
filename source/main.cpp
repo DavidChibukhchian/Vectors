@@ -1,14 +1,13 @@
 #include "vectors.h"
 #include "coord_system.h"
-
-const unsigned int WIDTH  = 192*5;
-const unsigned int HEIGHT = 108*5;
+#include "common.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Vectors");
+	sf::RenderWindow window(sf::VideoMode(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW), "Vectors");
+	
 	sf::Image image;
-	image.create(WIDTH, HEIGHT, sf::Color::Blue);
+	image.create(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW, sf::Color::Blue);
 
 	sf::Texture background;
 	background.loadFromImage(image);

@@ -1,34 +1,16 @@
-#ifndef _VECTORS_H
-#define _VECTORS_H
+#ifndef _COMMON_H
+#define _COMMON_H
 
 //---------------------------------------------------------------------------------------------------------------------
 
 #include <SFML\Graphics.hpp>
-#include <limits>
 
 //---------------------------------------------------------------------------------------------------------------------
 
-class Vec
-{
-	public:
-
-	double x;
-	double y;	
-
-	Vec(double x, double y);
-	~Vec();
-};
+const unsigned int WIDTH_OF_WINDOW  = 192*5;
+const unsigned int HEIGHT_OF_WINDOW = 108*5;
+const sf::Color background_color = sf::Color::Blue;
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecOpposite(Vec a);
-
-Vec VecMul(Vec a, double scalar);
-
-Vec VecAdd(Vec a, Vec b);
-
-Vec VecSub(Vec a, Vec b);
-
-//---------------------------------------------------------------------------------------------------------------------
-
-#endif // _VECTORS_H
+#endif // _COMMON_H

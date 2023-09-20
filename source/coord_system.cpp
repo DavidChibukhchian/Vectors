@@ -29,7 +29,7 @@ void DrawCircles(sf::RenderWindow* window, Coord_System* coord_system)
 
 	window->draw(circle);
 
-	for (float x_position = coord_system->x0; x_position <= 192*5.f; x_position += coord_system->base_len)
+	for (float x_position = coord_system->x0; x_position <= WIDTH_OF_WINDOW; x_position += coord_system->base_len)
 	{
 		circle.setPosition(sf::Vector2f(x_position - radius, coord_system->y0 - radius));
 		window->draw(circle);
@@ -47,7 +47,7 @@ void DrawCircles(sf::RenderWindow* window, Coord_System* coord_system)
 		window->draw(circle);
 	}
 
-	for (float y_position = coord_system->y0; y_position <= 108*5.f; y_position += coord_system->base_len)
+	for (float y_position = coord_system->y0; y_position <= HEIGHT_OF_WINDOW; y_position += coord_system->base_len)
 	{
 		circle.setPosition(sf::Vector2f(coord_system->x0 - radius, y_position - radius));
 		window->draw(circle);
@@ -60,15 +60,15 @@ void Coord_System::draw(sf::RenderWindow* window)
 {
 	sf::Vertex x_coord[] =
 	{
-		sf::Vertex(sf::Vector2f(Coord_System::x0, 0.f),     Coord_System::color),
-		sf::Vertex(sf::Vector2f(Coord_System::x0, 108*5.f), Coord_System::color)
+		sf::Vertex(sf::Vector2f(Coord_System::x0, 0.f),              Coord_System::color),
+		sf::Vertex(sf::Vector2f(Coord_System::x0, HEIGHT_OF_WINDOW), Coord_System::color)
 	};
 	window->draw(x_coord, 2, sf::Lines);
 
 	sf::Vertex y_coord[] =
 	{
-		sf::Vertex(sf::Vector2f(0.f,     Coord_System::y0), Coord_System::color),
-		sf::Vertex(sf::Vector2f(192*5.f, Coord_System::y0), Coord_System::color)
+		sf::Vertex(sf::Vector2f(0.f,             Coord_System::y0), Coord_System::color),
+		sf::Vertex(sf::Vector2f(WIDTH_OF_WINDOW, Coord_System::y0), Coord_System::color)
 	};
 	window->draw(y_coord, 2, sf::Lines);
 
