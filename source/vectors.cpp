@@ -53,35 +53,41 @@ Vec VecSub(Vec a, Vec b)
 
 //---------------------------------------------------------------------------------------------------------------------
 
-static void calculate_arrow(sf::Vertex* left_line, sf::Vertex* right_line, Vec vec, Coord_System cs, sf::Color color)
+void calculate_an_arrow(double len, double coef, sf::Vertex* arrow, double side_coef,
+						Vec vec, Coord_System cs, sf::Color color, Vec small_opposite_vec)
 {
-	double opposite_vec_x = (-1) * (vec.x) / MULTIPLIER;
-	double opposite_vec_y = (-1) * (vec.y) / MULTIPLIER;
-	Vec opposite_vec(opposite_vec_x, opposite_vec_y);
+	double normal_vec_x = len / (sqrt(1 + (coef * coef))) * side_coef;
+	double normal_vec_y = coef * normal_vec_x;
+	Vec  normal_vec(normal_vec_x, normal_vec_y);
 
-	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / MULTIPLIER;
-	double coef = - (vec.x / vec.y);
-
-	double left_normal_x = len / (sqrt(1 + (coef * coef)));
-	double left_normal_y = coef * left_normal_x;
-	Vec  left_normal(  left_normal_x,   left_normal_y);
-	Vec right_normal(- left_normal_x, - left_normal_y);
-	
-	Vec  left_arrow = VecAdd(left_normal,  opposite_vec);
-	left_line[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,                  cs.y0 - cs.base_len *  vec.y),                 color);
-	left_line[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + left_arrow.x),  cs.y0 - cs.base_len * (vec.y + left_arrow.y)), color);
-
-	Vec right_arrow = VecAdd(right_normal, opposite_vec);
-	right_line[0] = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,                  cs.y0 - cs.base_len *  vec.y),                  color);
-	right_line[1] = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + right_arrow.x), cs.y0 - cs.base_len * (vec.y + right_arrow.y)), color);
+	Vec  arrow_vec = VecAdd(normal_vec, small_opposite_vec);
+	arrow[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,
+	                                	cs.y0 - cs.base_len *  vec.y),                color);
+	arrow[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + arrow_vec.x),
+	                                    cs.y0 - cs.base_len * (vec.y + arrow_vec.y)), color);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
-static void draw_arrow(sf::Vertex* left_line, sf::Vertex* right_line, sf::RenderWindow* window)
+static void calculate_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, Vec vec, Coord_System cs, sf::Color color)
 {
-	window->draw(left_line,  2, sf::Lines);
-	window->draw(right_line, 2, sf::Lines);
+	double small_opposite_vec_x = (-1) * (vec.x) / MULTIPLIER;
+	double small_opposite_vec_y = (-1) * (vec.y) / MULTIPLIER;
+	Vec small_opposite_vec(small_opposite_vec_x, small_opposite_vec_y);
+
+	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / MULTIPLIER;
+	double coef = - (vec.x / vec.y);
+
+	calculate_an_arrow(len, coef,  left_arrow,  1, vec, cs, color, small_opposite_vec);
+	calculate_an_arrow(len, coef, right_arrow, -1, vec, cs, color, small_opposite_vec);
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+
+static void draw_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, sf::RenderWindow* window)
+{
+	window->draw(left_arrow,  2, sf::Lines);
+	window->draw(right_arrow, 2, sf::Lines);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -97,8 +103,8 @@ void VecDraw(Vec vec, Coord_System cs, sf::RenderWindow* window, sf::Color color
 
 	sf::Vertex  left_arrow[2];
 	sf::Vertex right_arrow[2];
-	calculate_arrow(left_arrow, right_arrow, vec, cs, color);
-	draw_arrow(left_arrow, right_arrow, window);
+	calculate_arrows(left_arrow, right_arrow, vec, cs, color);
+	draw_arrows(left_arrow, right_arrow, window);
 }
 
 //---------------------------------------------------------------------------------------------------------------------

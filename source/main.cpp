@@ -24,7 +24,7 @@ int main()
 		}
 
 
-		Coord_System coord_system(200, 400, 35, sf::Color::Red);
+		Coord_System coord_system(500, 500, 35, sf::Color::Red);
 		coord_system.draw(&window);
 
 		Vec a(3,8);
