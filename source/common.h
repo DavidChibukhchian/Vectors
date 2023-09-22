@@ -7,10 +7,15 @@
 
 //---------------------------------------------------------------------------------------------------------------------
 
-const unsigned int WIDTH_OF_WINDOW  = 192*5;
+const unsigned int  WIDTH_OF_WINDOW = 192*5;
 const unsigned int HEIGHT_OF_WINDOW = 108*5;
-const double RADIUS = 2.0;
-const sf::Color    background_color = sf::Color::Blue;
+const double                 RADIUS = 2.0;
+const sf::Color    BACKGROUND_COLOR = sf::Color::Blue;
+const double             MULTIPLIER = 10.0;
+
+//---------------------------------------------------------------------------------------------------------------------
+
+void create_background(sf::Image* image, sf::Texture* texture, sf::Sprite* sprite);
 
 //---------------------------------------------------------------------------------------------------------------------
 

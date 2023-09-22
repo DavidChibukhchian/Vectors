@@ -6,24 +6,14 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(WIDTH_OF_WINDOW, HEIGHT_OF_WINDOW), "Vectors");
 	
-	sf::Image image; sf::Texture texture; sf::Sprite sprite;
-	create_sprite(&image, &texture, &sprite);
-	window.draw(sprite);
-
-	Coord_System coord_system(200, 400, 35, sf::Color::Red);
-	coord_system.draw(&window);
-
-
-	Vec a(3, 4);
-	Vec b(4, 5);
-	Vec c = VecAdd(a, b);
-	Vec d = VecMul(b, 2);
+	sf::Image image; sf::Texture texture; sf::Sprite background;
+	create_background(&image, &texture, &background);	
 	
-	
-	
-	window.display();
 	while (window.isOpen())
 	{
+		window.clear();
+		window.draw(background);
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -32,6 +22,23 @@ int main()
 				window.close();
 			}
 		}
+
+
+		Coord_System coord_system(200, 400, 35, sf::Color::Red);
+		coord_system.draw(&window);
+
+		Vec a(3,8);
+		VecDraw(a, coord_system, &window, sf::Color::Green);
+
+		Vec b(1,1);
+		VecDraw(b, coord_system, &window, sf::Color::Green);
+
+		Vec c = VecAdd(a, b);
+		VecDraw(c, coord_system, &window, sf::Color::Green);
+
+
+
+		window.display();
 	}
 
 	return 0;

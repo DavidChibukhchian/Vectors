@@ -5,6 +5,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <limits>
+#include "coord_system.h"
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -21,17 +22,16 @@ class Vec
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecOpposite(Vec a);
+Vec  VecOpposite(Vec a);
 
-Vec VecMul(Vec a, double scalar);
+Vec  VecMul(Vec a, double scalar);
 
-Vec VecAdd(Vec a, Vec b);
+Vec  VecAdd(Vec a, Vec b);
 
-Vec VecSub(Vec a, Vec b);
+Vec  VecSub(Vec a, Vec b);
+
+void VecDraw(Vec vec, Coord_System cs, sf::RenderWindow* window, sf::Color color);
 
 //---------------------------------------------------------------------------------------------------------------------
-
-
-void create_sprite(sf::Image* image, sf::Texture* texture, sf::Sprite* sprite);
 
 #endif // _VECTORS_H
