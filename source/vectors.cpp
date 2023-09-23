@@ -53,6 +53,43 @@ Vec VecSub(Vec a, Vec b)
 
 //---------------------------------------------------------------------------------------------------------------------
 
+Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs)
+{
+	double x = 0;
+	double y = 0;
+	int mouse_button_was_pressed = false;
+
+	sf::Event event;
+
+	window->display();
+
+	while (window->isOpen())
+	{
+		while (window->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window->close();
+
+			else if (event.type == sf::Event::MouseButtonPressed)
+			{
+				x = (double)(sf::Mouse::getPosition(*window).x);
+				y = (double)(sf::Mouse::getPosition(*window).y);
+				mouse_button_was_pressed = true;
+			}
+		}
+
+		if (mouse_button_was_pressed)
+			break;
+	}
+
+	x = (x - cs.x0) / cs.base_len;
+	y = (cs.y0 - y) / cs.base_len;
+
+	return Vec(x,y);
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+
 void VecRotate(Vec* vec, double angle)
 {
 	double new_x = vec->x * cos(angle) + vec->y * sin(angle);

@@ -30,6 +30,8 @@ Vec  VecAdd(Vec a, Vec b);
 
 Vec  VecSub(Vec a, Vec b);
 
+Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs);
+
 void VecRotate(Vec* vec, double angle);
 
 void VecDraw(Vec vec, Coord_System cs, sf::RenderWindow* window, sf::Color color);
