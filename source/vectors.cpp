@@ -17,38 +17,33 @@ Vec::~Vec()
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecOpposite(Vec a)
+Vec Vec::operator-()
 {
-	Vec res((-1)*(a.x), (-1)*(a.y));
-
-	return res;
+    Vec res((-1) * this->x, (-1) * this->y);
+    return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecMul(Vec a, double scalar)
+Vec operator*(const double scalar, const Vec vec)
 {
-	Vec res(scalar * a.x, scalar * a.y);
-
-	return res;
+    return Vec(vec.x * scalar, vec.y * scalar);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecAdd(Vec a, Vec b)
+Vec operator+(const Vec a, const Vec b)
 {
-	Vec res(a.x + b.x, a.y + b.y);
-
-	return res;
+    Vec res(a.x + b.x, a.y + b.y);
+    return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec VecSub(Vec a, Vec b)
+Vec operator-(const Vec a, const Vec b)
 {
-	Vec res = VecAdd(a, VecOpposite(b));
-
-	return res;
+    Vec res(a.x - b.x, a.y - a.y);
+    return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -122,7 +117,7 @@ void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, Vec vec
 
 	Vec  normal_vec(normal_vec_x, normal_vec_y);
 
-	Vec  arrow_vec = VecAdd(normal_vec, small_opposite_vec);
+	Vec  arrow_vec = normal_vec + small_opposite_vec;
 	arrow[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,
 	                                	cs.y0 - cs.base_len *  vec.y),                color);
 	arrow[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + arrow_vec.x),

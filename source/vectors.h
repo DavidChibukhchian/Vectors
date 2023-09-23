@@ -16,19 +16,19 @@ class Vec
 	double x;
 	double y;	
 
+	Vec operator-();
+
 	Vec(double x, double y);
 	~Vec();
 };
 
 //---------------------------------------------------------------------------------------------------------------------
 
-Vec  VecOpposite(Vec a);
+Vec operator*(const double scalar, const Vec vec);
 
-Vec  VecMul(Vec a, double scalar);
+Vec operator+(const Vec a, const Vec b);
 
-Vec  VecAdd(Vec a, Vec b);
-
-Vec  VecSub(Vec a, Vec b);
+Vec operator-(const Vec a, const Vec b);
 
 Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs);
 
