@@ -5,6 +5,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <limits>
+#include "common.h"
 #include "coord_system.h"
 
 //---------------------------------------------------------------------------------------------------------------------

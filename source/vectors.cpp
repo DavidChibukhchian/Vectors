@@ -1,5 +1,4 @@
 #include "vectors.h"
-#include "common.h"
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -56,8 +55,6 @@ Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs)
 
 	sf::Event event;
 
-
-
 	while (window->isOpen())
 	{
 		while (window->pollEvent(event))
@@ -97,8 +94,7 @@ void VecRotate(Vec* vec, double angle)
 
 //---------------------------------------------------------------------------------------------------------------------
 
-void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, Vec vec, Coord_System cs,
-						sf::Color color, Vec small_opposite_vec)
+void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, Vec vec, Coord_System cs, sf::Color color, Vec small_opposite_vec)
 {
 	double normal_vec_x = 0;
 	double normal_vec_y = 0;

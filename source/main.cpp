@@ -13,15 +13,20 @@ int main()
 
 
 
-	Coord_System coord_system(500, 500, 35, sf::Color::Red);
-	coord_system.draw(&window);
+	Coord_System cs1(320,  420, 35, sf::Color::Red);
+	cs1.draw(&window);
+
+	Coord_System cs2(1000, 350, 12, sf::Color::Green);
+	cs2.draw(&window);
+
 	window.display();
-	
-	Vec a = VecSetByMouse(&window, coord_system);
 
-	Vec b = VecSetByMouse(&window, coord_system);
+	Vec vec1(1,5);
+	Vec vec2(5,6);
+	Vec vec_sum = vec1 + vec2;
 
-	Vec c = VecSetByMouse(&window, coord_system);
+
+	Vec c = VecSetByMouse(&window, cs1);
 
 
 
@@ -39,12 +44,20 @@ int main()
 
 
 
-		coord_system.draw(&window);
-	
+		cs1.draw(&window);
+		cs2.draw(&window);
+
+		VecDraw(vec1,    cs1, &window, sf::Color::Green);
+		VecDraw(vec2,    cs1, &window, sf::Color::Green);
+		VecDraw(vec_sum, cs1, &window, sf::Color::Yellow);
+
+		VecDraw(vec1,    cs2, &window, sf::Color::Green);
+		VecDraw(vec2,    cs2, &window, sf::Color::Green);
+		VecDraw(vec_sum, cs2, &window, sf::Color::Yellow);
+
 		VecRotate(&c, 0.001);
-		VecDraw(a, coord_system, &window, sf::Color::Green);
-		VecDraw(b, coord_system, &window, sf::Color::Green);
-		VecDraw(c, coord_system, &window, sf::Color::Green);
+		VecDraw(c, cs1, &window, sf::Color::Red);
+		VecDraw(c, cs2, &window, sf::Color::Red);
 
 
 
