@@ -53,11 +53,36 @@ Vec VecSub(Vec a, Vec b)
 
 //---------------------------------------------------------------------------------------------------------------------
 
-void calculate_an_arrow(double len, double coef, sf::Vertex* arrow, double side_coef,
-						Vec vec, Coord_System cs, sf::Color color, Vec small_opposite_vec)
+void VecRotate(Vec* vec, double angle)
 {
-	double normal_vec_x = len / (sqrt(1 + (coef * coef))) * side_coef;
-	double normal_vec_y = coef * normal_vec_x;
+	double new_x = vec->x * cos(angle) + vec->y * sin(angle);
+	double new_y = - vec->x * sin(angle) + vec->y * cos(angle);
+
+	vec->x = new_x;
+	vec->y = new_y;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, Vec vec, Coord_System cs,
+						sf::Color color, Vec small_opposite_vec)
+{
+	double normal_vec_x = 0;
+	double normal_vec_y = 0;
+
+	if (vec.y == 0)
+	{
+		normal_vec_x = 0;
+		normal_vec_y = len * side_coef;
+	}
+	else
+	{
+		double coef = - (vec.x / vec.y);
+		normal_vec_x = len / (sqrt(1 + (coef * coef))) * side_coef;
+		normal_vec_y = coef * normal_vec_x;
+	}
+
 	Vec  normal_vec(normal_vec_x, normal_vec_y);
 
 	Vec  arrow_vec = VecAdd(normal_vec, small_opposite_vec);
@@ -76,10 +101,9 @@ static void calculate_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, Ve
 	Vec small_opposite_vec(small_opposite_vec_x, small_opposite_vec_y);
 
 	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / MULTIPLIER;
-	double coef = - (vec.x / vec.y);
 
-	calculate_an_arrow(len, coef,  left_arrow,  1, vec, cs, color, small_opposite_vec);
-	calculate_an_arrow(len, coef, right_arrow, -1, vec, cs, color, small_opposite_vec);
+	calculate_an_arrow(len,  left_arrow,  1, vec, cs, color, small_opposite_vec);
+	calculate_an_arrow(len, right_arrow, -1, vec, cs, color, small_opposite_vec);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
