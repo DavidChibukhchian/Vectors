@@ -132,7 +132,7 @@ static void calculate_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, Ve
 	double small_opposite_vec_y = (-1) * (vec.y) / MULTIPLIER;
 	Vec small_opposite_vec(small_opposite_vec_x, small_opposite_vec_y);
 
-	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / MULTIPLIER;
+	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / (2 * MULTIPLIER);
 
 	calculate_an_arrow(len,  left_arrow,  1, vec, cs, color, small_opposite_vec);
 	calculate_an_arrow(len, right_arrow, -1, vec, cs, color, small_opposite_vec);
