@@ -56,7 +56,7 @@ Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs)
 
 	sf::Event event;
 
-	window->display();
+
 
 	while (window->isOpen())
 	{
