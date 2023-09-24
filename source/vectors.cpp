@@ -146,12 +146,10 @@ static void draw_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, sf::Ren
 
 void VecDraw(Vec vec, Coord_System cs, sf::RenderWindow* window, sf::Color color)
 {
-	sf::Vertex line[] =
-	{
-		sf::Vertex(sf::Vector2f(cs.x0                      , cs.y0                      ), color),
-		sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * vec.x, cs.y0 - cs.base_len * vec.y), color)
-	};
-	window->draw(line, 2, sf::Lines);
+	sf::Vertex line_of_vector[] =
+		{ sf::Vertex(sf::Vector2f(cs.x0                      , cs.y0                      ), color),
+		  sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * vec.x, cs.y0 - cs.base_len * vec.y), color) };
+	window->draw(line_of_vector, 2, sf::Lines);
 
 	sf::Vertex  left_arrow[2];
 	sf::Vertex right_arrow[2];
