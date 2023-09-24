@@ -18,31 +18,31 @@ Vec::~Vec()
 
 Vec Vec::operator-()
 {
-    Vec res((-1) * this->x, (-1) * this->y);
-    return res;
+	Vec res((-1) * this->x, (-1) * this->y);
+	return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
 Vec operator*(const double scalar, const Vec vec)
 {
-    return Vec(vec.x * scalar, vec.y * scalar);
+	return Vec(vec.x * scalar, vec.y * scalar);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
 Vec operator+(const Vec a, const Vec b)
 {
-    Vec res(a.x + b.x, a.y + b.y);
-    return res;
+	Vec res(a.x + b.x, a.y + b.y);
+	return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
 Vec operator-(const Vec a, const Vec b)
 {
-    Vec res(a.x - b.x, a.y - a.y);
-    return res;
+	Vec res(a.x - b.x, a.y - a.y);
+	return res;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs)
 void VecRotate(Vec* vec, double angle)
 {
 	double new_x = vec->x * cos(angle) + vec->y * sin(angle);
-	double new_y = - vec->x * sin(angle) + vec->y * cos(angle);
+	double new_y = vec->y * cos(angle) - vec->x * sin(angle);
 
 	vec->x = new_x;
 	vec->y = new_y;
@@ -115,9 +115,9 @@ void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, Vec vec
 
 	Vec  arrow_vec = normal_vec + small_opposite_vec;
 	arrow[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,
-	                                	cs.y0 - cs.base_len *  vec.y),                color);
+					    cs.y0 - cs.base_len *  vec.y),                color);
 	arrow[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + arrow_vec.x),
-	                                    cs.y0 - cs.base_len * (vec.y + arrow_vec.y)), color);
+					    cs.y0 - cs.base_len * (vec.y + arrow_vec.y)), color);
 }
 
 //---------------------------------------------------------------------------------------------------------------------

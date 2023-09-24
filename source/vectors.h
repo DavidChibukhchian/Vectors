@@ -15,7 +15,7 @@ class Vec
 	public:
 
 	double x;
-	double y;	
+	double y;
 
 	Vec operator-();
 

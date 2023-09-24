@@ -8,9 +8,7 @@ int main()
 
 	sf::Image image; sf::Texture texture; sf::Sprite background;
 	create_background(&image, &texture, &background);
-
 	window.draw(background);
-
 
 
 	Coord_System cs1(320,  420, 35, sf::Color::Red);
@@ -25,9 +23,7 @@ int main()
 	Vec vec2(5,6);
 	Vec vec_sum = vec1 + vec2;
 
-
-	Vec c = VecSetByMouse(&window, cs1);
-
+	Vec vec3 = VecSetByMouse(&window, cs1);
 
 
 	while (window.isOpen())
@@ -43,7 +39,6 @@ int main()
 		}
 
 
-
 		cs1.draw(&window);
 		cs2.draw(&window);
 
@@ -55,10 +50,9 @@ int main()
 		VecDraw(vec2,    cs2, &window, sf::Color::Green);
 		VecDraw(vec_sum, cs2, &window, sf::Color::Yellow);
 
-		VecRotate(&c, 0.001);
-		VecDraw(c, cs1, &window, sf::Color::Red);
-		VecDraw(c, cs2, &window, sf::Color::Red);
-
+		VecRotate(&vec3, 0.001);
+		VecDraw(vec3,    cs1, &window, sf::Color::Red);
+		VecDraw(vec3,    cs2, &window, sf::Color::Red);
 
 
 		window.display();

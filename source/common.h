@@ -9,10 +9,10 @@
 
 const unsigned int  WIDTH_OF_WINDOW = 192*7;
 const unsigned int HEIGHT_OF_WINDOW = 108*7;
-const double                 RADIUS = 2.0;
-const sf::Color    BACKGROUND_COLOR = sf::Color::Blue;
-const double             MULTIPLIER = 10.0;
 const unsigned int      LEN_OF_AXIS = 300;
+const double                 RADIUS = 2.0;
+const double             MULTIPLIER = 10.0;
+const sf::Color    BACKGROUND_COLOR = sf::Color::Blue;
 
 //---------------------------------------------------------------------------------------------------------------------
 
