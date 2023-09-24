@@ -130,15 +130,15 @@ static void calculate_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, Ve
 
 	double  len = sqrt((vec.x)*(vec.x) + (vec.y)*(vec.y)) / (2 * MULTIPLIER);
 
-	calculate_an_arrow(len,  left_arrow,  1, vec, cs, color, small_opposite_vec);
-	calculate_an_arrow(len, right_arrow, -1, vec, cs, color, small_opposite_vec);
+	calculate_an_arrow(len,  left_arrow, -1, vec, cs, color, small_opposite_vec);
+	calculate_an_arrow(len, right_arrow,  1, vec, cs, color, small_opposite_vec);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
 
 static void draw_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, sf::RenderWindow* window)
 {
-	window->draw(left_arrow,  2, sf::Lines);
+	window->draw( left_arrow, 2, sf::Lines);
 	window->draw(right_arrow, 2, sf::Lines);
 }
 
