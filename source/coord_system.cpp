@@ -19,7 +19,7 @@ Coord_System::~Coord_System()
 
 //--------------------------------------------------------------------------------------------------------------------
 
-void DrawCircles(sf::RenderWindow* window, Coord_System* cs)
+static void DrawCircles(sf::RenderWindow* window, Coord_System* cs)
 {
 	sf::CircleShape circle(RADIUS);
 	circle.setFillColor(cs->color);
