@@ -16,7 +16,7 @@ class Coord_System
 
 	double x0;
 	double y0;
-	double base_len;
+	double basis_len;
 	sf::Color color;
 
 	void draw(sf::RenderWindow* window);

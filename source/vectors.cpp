@@ -74,8 +74,8 @@ Vec VecSetByMouse(sf::RenderWindow* window, Coord_System cs)
 			break;
 	}
 
-	x = (x - cs.x0) / cs.base_len;
-	y = (cs.y0 - y) / cs.base_len;
+	x = (x - cs.x0) / cs.basis_len;
+	y = (cs.y0 - y) / cs.basis_len;
 
 	return Vec(x,y);
 }
@@ -114,10 +114,10 @@ static void calculate_an_arrow(double len, sf::Vertex* arrow, double side_coef, 
 	Vec  normal_vec(normal_vec_x, normal_vec_y);
 
 	Vec  arrow_vec = normal_vec + small_opposite_vec;
-	arrow[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len *  vec.x,
-					    cs.y0 - cs.base_len *  vec.y),                color);
-	arrow[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * (vec.x + arrow_vec.x),
-					    cs.y0 - cs.base_len * (vec.y + arrow_vec.y)), color);
+	arrow[0]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.basis_len *  vec.x,
+					    cs.y0 - cs.basis_len *  vec.y),                color);
+	arrow[1]  = sf::Vertex(sf::Vector2f(cs.x0 + cs.basis_len * (vec.x + arrow_vec.x),
+					    cs.y0 - cs.basis_len * (vec.y + arrow_vec.y)), color);
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -147,8 +147,8 @@ static void draw_arrows(sf::Vertex* left_arrow, sf::Vertex* right_arrow, sf::Ren
 void VecDraw(Vec vec, Coord_System cs, sf::RenderWindow* window, sf::Color color)
 {
 	sf::Vertex line_of_vector[] =
-		{ sf::Vertex(sf::Vector2f(cs.x0                      , cs.y0                      ), color),
-		  sf::Vertex(sf::Vector2f(cs.x0 + cs.base_len * vec.x, cs.y0 - cs.base_len * vec.y), color) };
+		{ sf::Vertex(sf::Vector2f(cs.x0                       , cs.y0                       ), color),
+		  sf::Vertex(sf::Vector2f(cs.x0 + cs.basis_len * vec.x, cs.y0 - cs.basis_len * vec.y), color) };
 	window->draw(line_of_vector, 2, sf::Lines);
 
 	sf::Vertex  left_arrow[2];

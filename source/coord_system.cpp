@@ -2,19 +2,19 @@
 
 //--------------------------------------------------------------------------------------------------------------------
 
-Coord_System::Coord_System(double x0, double y0, double base_len, sf::Color color) :
-	x0       (x0),
-	y0       (y0),
-	base_len (base_len),
-	color    (color)
+Coord_System::Coord_System(double x0, double y0, double basis_len, sf::Color color) :
+	x0        (x0),
+	y0        (y0),
+	basis_len (basis_len),
+	color     (color)
 	{}
 
 
 Coord_System::~Coord_System()
 {
-	this->x0       = std::numeric_limits<double>::signaling_NaN();
-	this->y0       = std::numeric_limits<double>::signaling_NaN();
-	this->base_len = std::numeric_limits<double>::signaling_NaN();
+	this->x0        = std::numeric_limits<double>::signaling_NaN();
+	this->y0        = std::numeric_limits<double>::signaling_NaN();
+	this->basis_len = std::numeric_limits<double>::signaling_NaN();
 }
 
 //--------------------------------------------------------------------------------------------------------------------
@@ -24,25 +24,25 @@ static void DrawCircles(sf::RenderWindow* window, Coord_System* cs)
 	sf::CircleShape circle(RADIUS);
 	circle.setFillColor(cs->color);
 
-	for (double x = cs->x0; (x <= cs->x0 + LEN_OF_AXIS - RADIUS) and (x <= WIDTH_OF_WINDOW - RADIUS);  x += cs->base_len)
+	for (double x = cs->x0; (x <= cs->x0 + LEN_OF_AXIS - RADIUS) and (x <= WIDTH_OF_WINDOW - RADIUS);  x += cs->basis_len)
 	{
 		circle.setPosition(sf::Vector2f(x - RADIUS, cs->y0 - RADIUS));
 		window->draw(circle);
 	}
 	
-	for (double y = cs->y0; (y <= cs->y0 + LEN_OF_AXIS - RADIUS) and (y <= HEIGHT_OF_WINDOW - RADIUS); y += cs->base_len)
+	for (double y = cs->y0; (y <= cs->y0 + LEN_OF_AXIS - RADIUS) and (y <= HEIGHT_OF_WINDOW - RADIUS); y += cs->basis_len)
 	{
 		circle.setPosition(sf::Vector2f(cs->x0 - RADIUS, y - RADIUS));
 		window->draw(circle);
 	}
 
-	for (double x = cs->x0; (x >= cs->x0 - LEN_OF_AXIS + RADIUS) and (x >= RADIUS); x -= cs->base_len)
+	for (double x = cs->x0; (x >= cs->x0 - LEN_OF_AXIS + RADIUS) and (x >= RADIUS); x -= cs->basis_len)
 	{
 		circle.setPosition(sf::Vector2f(x - RADIUS, cs->y0 - RADIUS));
 		window->draw(circle);
 	}
 
-	for (double y = cs->y0; (y >= cs->y0 - LEN_OF_AXIS + RADIUS) and (y >= RADIUS); y -= cs->base_len)
+	for (double y = cs->y0; (y >= cs->y0 - LEN_OF_AXIS + RADIUS) and (y >= RADIUS); y -= cs->basis_len)
 	{
 		circle.setPosition(sf::Vector2f(cs->x0 - RADIUS, y - RADIUS));
 		window->draw(circle);
